@@ -1,15 +1,16 @@
 import React from "react"
+import "./globals.css"
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import { CartProvider } from '@/components/cart-context'
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'GlowUp - Premium Beauty & Cosmetics',
-  description: 'Discover our latest collection of luxury cosmetics and beauty products with premium vegan formulas',
+  title: 'K-shop',
+  description: 'Moda, Alimentos y Fanshop de Corea en un solo lugar.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -38,7 +39,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
         <Analytics />
       </body>
     </html>
